@@ -7,7 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Fetch the annonces from the server and add them to the map
-fetch('/annonces')  // Change to your server URL
+fetch('https://vezuras.github.io/interactive-map/annonces')
     .then(response => response.json())
     .then(data => {
         console.log("Annonces data:", data); // Log the data to check its structure and content
