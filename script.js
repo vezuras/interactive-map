@@ -6,8 +6,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Fetch the annonces from the server and add them to the map
-fetch('http://127.0.0.1:8000/annonces')  // Use your local server or API URL
+// Fetch the annonces from the local API and add them to the map
+fetch('http://127.0.0.1:8000/annonces')
     .then(response => response.json())
     .then(data => {
         console.log("Annonces data:", data);
