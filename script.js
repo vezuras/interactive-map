@@ -10,7 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 fetch('https://vezuras.github.io/interactive-map/annonces')
     .then(response => response.json())
     .then(data => {
-        console.log("Annonces data:", data); // Log the data to check its structure and content
+        console.log("Annonces data:", data);
         data.forEach(annonce => {
             if (annonce.latitude && annonce.longitude) {
                 L.marker([annonce.latitude, annonce.longitude])
@@ -22,3 +22,4 @@ fetch('https://vezuras.github.io/interactive-map/annonces')
         });
     })
     .catch(error => console.error('Error fetching annonces:', error));
+
