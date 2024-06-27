@@ -8,17 +8,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Fetch the annonces from the local API and add them to the map
 fetch('http://127.0.0.1:8000/annonces')
-    .then(response => response.json())
-    .then(data => {
-        console.log("Annonces data:", data);
-        data.forEach(annonce => {
-            if (annonce.latitude && annonce.longitude) {
-                L.marker([annonce.latitude, annonce.longitude])
-                    .addTo(map)
-                    .bindPopup(`<b>${annonce.title}</b><br>${annonce.description}`);
-            } else {
-                console.warn(`Missing coordinates for: ${annonce.title}`);
-            }
-        });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
     })
-    .catch(error => console.error('Error fetching annonces:', error));
+    .then(data => {
+        // Utilisez les données pour afficher les annonces sur la carte
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
