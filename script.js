@@ -25,8 +25,8 @@
 
 
 
-// Initialize the map
-var map = L.map('map').setView([51.505, -0.09], 13);
+// Initialize the map with a central position (Québec)
+var map = L.map('map').setView([52.9399, -73.5491], 6);
 
 // Add a tile layer from OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -41,8 +41,7 @@ fetch('/annonces')
             var marker = L.marker([annonce.latitude, annonce.longitude]).addTo(map);
             var popupContent = `
                 <b>${annonce.title}</b><br>
-                ${annonce.description}<br>
-                <a href="${annonce.url}" target="_blank">Voir plus</a>
+                ${annonce.description}
             `;
             marker.bindPopup(popupContent);
         });
